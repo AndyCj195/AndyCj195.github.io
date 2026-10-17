@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Andrés Chávez Jiménez — Ingeniero de Software | Full-Stack & Backend</title>
-  <meta name="description" content="Portafolio de Ingeniería de Software de Andrés Eliceo Chávez Jiménez. Especialista en Backend (Java/Spring Boot, Python/Flask, PostgreSQL), Módulos ERP (Odoo), Mobile (Kotlin BLE, Flutter) y Arquitectura Limpia (POO, SOLID, MVC, DAO/DTO)." />
+  <meta name="description" content="Portafolio de Ingeniería de Software de Andrés Eliceo Chávez Jiménez. Especialista en Backend (Java/Spring Boot 3, Python, PostgreSQL), Mobile (Flutter Clean Architecture, Kotlin BLE) y Principios SOLID / POO / MVC / DAO / DTO." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
@@ -642,11 +642,11 @@
         <p class="hero-lead">
           Desarrollador Backend y Full-Stack especializado en <strong>Programación Orientada a Objetos (POO)</strong>, 
           <strong>Principios SOLID</strong>, <strong>Patrones de Diseño (MVC, DAO/DTO)</strong> y <strong>Clean Code</strong>. 
-          Experiencia construyendo APIs REST, módulos ERP empresariales, aplicaciones móviles conectadas por BLE y bases de datos relacionales optimizadas.
+          Experiencia construyendo APIs REST con Spring Boot 3, aplicaciones multiplataforma en Flutter, integración biométrica BLE en Kotlin y bases de datos relacionales optimizadas.
         </p>
         <div class="pillar-tags">
-          <span class="pillar-tag">Java / Spring Boot</span>
-          <span class="pillar-tag">Python / Flask / Odoo</span>
+          <span class="pillar-tag">Java / Spring Boot 3</span>
+          <span class="pillar-tag">Python / Flask</span>
           <span class="pillar-tag">PostgreSQL / SQL</span>
           <span class="pillar-tag">Angular / React</span>
           <span class="pillar-tag">Kotlin / Flutter</span>
@@ -702,24 +702,24 @@
     <section class="section" id="proyectos">
       <div class="section-header">
         <div>
-          <h2>Experiencia y Proyectos de Alta Complejidad</h2>
+          <h2>Experiencia y Proyectos Relevantes</h2>
           <p>Selecciona cada sistema para inspeccionar su flujo arquitectónico, decisiones técnicas e implementación.</p>
         </div>
       </div>
 
       <div class="workbench">
         <div class="project-selector" role="tablist">
-          <button class="project-tab active" type="button" data-project="erp">
+          <button class="project-tab active" type="button" data-project="springboot">
             <div class="project-tab-top">
-              <h3>1. Módulos ERP (Odoo) &amp; Sistema WMS</h3>
-              <span class="project-period">Feb 2026 – May 2026</span>
+              <h3>1. API REST Spring Boot 3 &amp; App Multiplataforma</h3>
+              <span class="project-period">Full-Stack · Clean Arch</span>
             </div>
-            <p>Arquitectura de módulos logísticos en Odoo (Python, XML, OWL) y sistema WMS con Flask y Stored Procedures en PostgreSQL.</p>
+            <p>Backend REST en Spring Boot 3 con PostgreSQL y Docker, integrado con app Flutter bajo Clean Architecture y gestión de estado BLoC/Provider.</p>
             <div class="mini-tags">
-              <span class="mini-tag">Python</span>
-              <span class="mini-tag">Odoo OWL</span>
-              <span class="mini-tag">Flask</span>
+              <span class="mini-tag">Spring Boot 3</span>
               <span class="mini-tag">PostgreSQL</span>
+              <span class="mini-tag">Flutter BLoC</span>
+              <span class="mini-tag">Docker</span>
             </div>
           </button>
 
@@ -768,36 +768,36 @@
 
         <div class="console-card" aria-live="polite">
           <div class="console-bar">
-            <span id="consoleFilename">arquitectura_erp_wms.sql</span>
+            <span id="consoleFilename">ApiRestController.java</span>
             <span>Blueprint Técnico</span>
           </div>
           <div class="console-body">
-            <h4 id="consoleTitle">Arquitectura ERP (Odoo OWL) &amp; Optimización PostgreSQL</h4>
+            <h4 id="consoleTitle">API REST en Spring Boot 3, PostgreSQL, Docker &amp; Flutter BLoC</h4>
             <p class="console-desc" id="consoleDesc">
-              Diseño de componentes reactivos en OWL y vistas XML integradas con modelos de negocio en Python para trazabilidad de pallets en tiempo real, respaldado por funciones transaccionales en PostgreSQL.
+              Arquitectura desacoplada con servicios REST en Spring Boot 3, persistencia relacional en PostgreSQL contenedorizada con Docker y cliente móvil reactivo en Flutter (Clean Architecture + BLoC/Provider).
             </p>
             <div class="arch-flow" id="consoleFlow">
-              <span class="arch-node">Lector Barcode / UI OWL</span>
+              <span class="arch-node">Flutter UI (BLoC / Provider)</span>
               <span class="arch-sep">→</span>
-              <span class="arch-node">Controlador Python (Odoo / Flask)</span>
+              <span class="arch-node">Spring Boot 3 REST API</span>
               <span class="arch-sep">→</span>
-              <span class="arch-node">PostgreSQL Stored Procedures</span>
+              <span class="arch-node">PostgreSQL (Docker)</span>
             </div>
-            <pre class="code-pre" id="consoleCode">-- Procedimiento de trazabilidad y asignación de ubicación logística
-CREATE OR REPLACE FUNCTION wms_asignar_ubicacion_pallet(
-    p_codigo_pallet VARCHAR,
-    p_ubicacion_destino INT
-) RETURNS TABLE(estado VARCHAR, timestamp_op TIMESTAMPTZ)
-LANGUAGE plpgsql AS $$
-BEGIN
-    UPDATE wms_inventario_pallets
-       SET ubicacion_id = p_ubicacion_destino,
-           actualizado_en = NOW()
-     WHERE codigo_barras = p_codigo_pallet;
+            <pre class="code-pre" id="consoleCode">@RestController
+@RequestMapping("/api/v1/transacciones")
+public class TransaccionController {
+    private final TransaccionService service;
 
-    RETURN QUERY SELECT 'ASIGNADO'::VARCHAR, NOW();
-END;
-$$;</pre>
+    public TransaccionController(TransaccionService service) {
+        this.service = service;
+    }
+
+    @PostMapping
+    public ResponseEntity&lt;TransaccionDTO&gt; registrar(@Valid @RequestBody TransaccionRequest req) {
+        TransaccionDTO respuesta = service.procesarTransaccion(req);
+        return ResponseEntity.status(HttpStatus.CREATED).body(respuesta);
+    }
+}</pre>
           </div>
         </div>
       </div>
@@ -830,15 +830,14 @@ $$;</pre>
         <div class="stack-card">
           <h3>Frameworks &amp; Librerías</h3>
           <div class="stack-items">
-            <span class="stack-chip">Spring Boot</span>
+            <span class="stack-chip">Spring Boot 3</span>
             <span class="stack-chip">Angular</span>
             <span class="stack-chip">React</span>
-            <span class="stack-chip">Flutter</span>
+            <span class="stack-chip">Flutter (BLoC / Provider)</span>
             <span class="stack-chip">Jetpack Compose</span>
             <span class="stack-chip">Flask</span>
             <span class="stack-chip">Express</span>
-            <span class="stack-chip">Symfony / CodeIgniter 4</span>
-            <span class="stack-chip">Odoo (OWL)</span>
+            <span class="stack-chip">CodeIgniter 4</span>
           </div>
         </div>
 
@@ -848,7 +847,7 @@ $$;</pre>
             <span class="stack-chip">Programación Orientada a Objetos (POO)</span>
             <span class="stack-chip">Principios SOLID</span>
             <span class="stack-chip">Patrones MVC / DAO / DTO</span>
-            <span class="stack-chip">Clean Code</span>
+            <span class="stack-chip">Clean Code &amp; Clean Architecture</span>
             <span class="stack-chip">APIs REST</span>
             <span class="stack-chip">Pruebas Unitarias e Integración</span>
             <span class="stack-chip">Refactorización</span>
@@ -858,7 +857,7 @@ $$;</pre>
         <div class="stack-card">
           <h3>Bases de Datos, DevOps &amp; Seguridad</h3>
           <div class="stack-items">
-            <span class="stack-chip">PostgreSQL (Stored Procedures)</span>
+            <span class="stack-chip">PostgreSQL</span>
             <span class="stack-chip">MySQL</span>
             <span class="stack-chip">SQLite</span>
             <span class="stack-chip">Git / GitHub</span>
@@ -928,26 +927,26 @@ $$;</pre>
 
   <script>
     const projectData = {
-      erp: {
-        filename: 'arquitectura_erp_wms.sql',
-        title: 'Arquitectura ERP (Odoo OWL) & Optimización PostgreSQL',
-        desc: 'Diseño de componentes reactivos en OWL y vistas XML integradas con modelos de negocio en Python para trazabilidad de pallets en tiempo real, respaldado por funciones transaccionales en PostgreSQL.',
-        flow: ['Lector Barcode / UI OWL', 'Controlador Python (Odoo / Flask)', 'PostgreSQL Stored Procedures'],
-        code: `-- Procedimiento de trazabilidad y asignación de ubicación logística
-CREATE OR REPLACE FUNCTION wms_asignar_ubicacion_pallet(
-    p_codigo_pallet VARCHAR,
-    p_ubicacion_destino INT
-) RETURNS TABLE(estado VARCHAR, timestamp_op TIMESTAMPTZ)
-LANGUAGE plpgsql AS $$
-BEGIN
-    UPDATE wms_inventario_pallets
-       SET ubicacion_id = p_ubicacion_destino,
-           actualizado_en = NOW()
-     WHERE codigo_barras = p_codigo_pallet;
+      springboot: {
+        filename: 'TransaccionController.java',
+        title: 'API REST en Spring Boot 3, PostgreSQL, Docker & Flutter BLoC',
+        desc: 'Arquitectura desacoplada con servicios REST en Spring Boot 3, persistencia relacional en PostgreSQL contenedorizada con Docker y cliente móvil reactivo en Flutter (Clean Architecture + BLoC/Provider).',
+        flow: ['Flutter UI (BLoC / Provider)', 'Spring Boot 3 REST API', 'PostgreSQL (Docker)'],
+        code: `@RestController
+@RequestMapping("/api/v1/transacciones")
+public class TransaccionController {
+    private final TransaccionService service;
 
-    RETURN QUERY SELECT 'ASIGNADO'::VARCHAR, NOW();
-END;
-$$;`
+    public TransaccionController(TransaccionService service) {
+        this.service = service;
+    }
+
+    @PostMapping
+    public ResponseEntity<TransaccionDTO> registrar(@Valid @RequestBody TransaccionRequest req) {
+        TransaccionDTO respuesta = service.procesarTransaccion(req);
+        return ResponseEntity.status(HttpStatus.CREATED).body(respuesta);
+    }
+}`
       },
       dipromacom: {
         filename: 'ServicioOrdenesImpl.java',
