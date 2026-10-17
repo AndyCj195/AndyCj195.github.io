@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Andrés Chávez Jiménez — Ingeniero de Software | Full-Stack & Backend</title>
+  <meta name="description" content="Portafolio de Ingeniería de Software de Andrés Eliceo Chávez Jiménez. Especialista en Backend (Java/Spring Boot, Python/Flask, PostgreSQL), Módulos ERP (Odoo), Mobile (Kotlin BLE, Flutter) y Arquitectura Limpia (POO, SOLID, MVC, DAO/DTO)." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-page: #F8FAFC;
+      --bg-card: #FFFFFF;
+      --bg-console: #0F172A;
+      --ink-primary: #0F172A;
+      --ink-secondary: #334155;
+      --ink-muted: #64748B;
+      --brand-blue: #1B6B9D;
+      --brand-blue-dark: #134E73;
+      --brand-blue-tint: #E0F2FE;
+      --accent-emerald: #059669;
+      --border-subtle: #E2E8F0;
+      --border-strong: #CBD5E1;
+      --radius-md: 10px;
+      --radius-lg: 14px;
+    }
+
+    [data-theme="dark"] {
+      --bg-page: #0B1120;
+      --bg-card: #111827;
+      --bg-console: #070B14;
+      --ink-primary: #F8FAFC;
+      --ink-secondary: #CBD5E1;
+      --ink-muted: #94A3B8;
+      --brand-blue: #38BDF8;
+      --brand-blue-dark: #0284C7;
+      --brand-blue-tint: rgba(56, 189, 248, 0.12);
+      --border-subtle: #1E293B;
+      --border-strong: #334155;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--ink-primary);
+      line-height: 1.6;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    /* Top Navigation */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: color-mix(in srgb, var(--bg-card) 88%, transparent);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .topbar-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0.9rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand-id {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--ink-primary);
+    }
+
+    .brand-badge {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: var(--brand-blue);
+      color: #FFFFFF;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: 0.95rem;
+      display: grid;
+      place-items: center;
+    }
+
+    .brand-name {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 0.98rem;
+      letter-spacing: -0.01em;
+    }
+
+    .brand-role {
+      font-size: 0.78rem;
+      color: var(--ink-muted);
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--ink-secondary);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.15s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--brand-blue);
+    }
+
+    .theme-btn {
+      background: var(--bg-page);
+      border: 1px solid var(--border-strong);
+      color: var(--ink-primary);
+      padding: 0.45rem 0.75rem;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 3.5rem 0 3rem;
+      border-bottom: 1px solid var(--border-subtle);
+      display: grid;
+      grid-template-columns: 1.25fr 0.95fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      background: var(--brand-blue-tint);
+      color: var(--brand-blue);
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-bottom: 1.1rem;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-emerald);
+    }
+
+    .hero h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(2rem, 3.6vw, 2.85rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+      margin-bottom: 1rem;
+    }
+
+    .hero-lead {
+      font-size: 1.04rem;
+      color: var(--ink-secondary);
+      max-width: 64ch;
+      margin-bottom: 1.5rem;
+    }
+
+    .pillar-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .pillar-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      padding: 0.3rem 0.65rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-strong);
+      border-radius: 6px;
+      color: var(--ink-secondary);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem 1.25rem;
+      border-radius: 8px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.12s ease, background-color 0.15s ease;
+    }
+
+    .btn:active {
+      transform: translateY(1px);
+    }
+
+    .btn-primary {
+      background: #1B6B9D;
+      color: #FFFFFF;
+    }
+
+    .btn-primary:hover {
+      background: #134E73;
+    }
+
+    .btn-outline {
+      background: var(--bg-card);
+      color: var(--ink-primary);
+      border: 1px solid var(--border-strong);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--brand-blue);
+      color: var(--brand-blue);
+    }
+
+    /* Profile & Architecture Summary Card */
+    .profile-dossier {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+    }
+
+    .dossier-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding-bottom: 1.15rem;
+      border-bottom: 1px solid var(--border-subtle);
+      margin-bottom: 1.15rem;
+    }
+
+    .avatar {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--brand-blue);
+    }
+
+    .dossier-meta h2 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .dossier-meta p {
+      font-size: 0.85rem;
+      color: var(--ink-muted);
+    }
+
+    .spec-list {
+      display: grid;
+      gap: 0.75rem;
+      font-size: 0.88rem;
+    }
+
+    .spec-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-bottom: 0.55rem;
+      border-bottom: 1px dashed var(--border-subtle);
+    }
+
+    .spec-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .spec-key {
+      color: var(--ink-muted);
+      font-weight: 500;
+    }
+
+    .spec-val {
+      color: var(--ink-primary);
+      font-weight: 600;
+      text-align: right;
+    }
+
+    /* Section Headings */
+    .section {
+      padding: 3.25rem 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .section-header {
+      margin-bottom: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .section-header h2 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.65rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .section-header p {
+      color: var(--ink-secondary);
+      font-size: 0.95rem;
+      max-width: 60ch;
+    }
+
+    /* Interactive Architecture Workbench */
+    .workbench {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    .project-selector {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .project-tab {
+      text-align: left;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-left: 4px solid transparent;
+      border-radius: var(--radius-md);
+      padding: 1.15rem 1.25rem;
+      cursor: pointer;
+      transition: border-color 0.15s ease, background-color 0.15s ease;
+    }
+
+    .project-tab:hover {
+      border-color: var(--border-strong);
+    }
+
+    .project-tab.active {
+      border-color: var(--border-strong);
+      border-left-color: var(--brand-blue);
+      background: color-mix(in srgb, var(--brand-blue-tint) 35%, var(--bg-card));
+    }
+
+    .project-tab-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .project-tab h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: var(--ink-primary);
+    }
+
+    .project-period {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.74rem;
+      color: var(--brand-blue);
+      font-weight: 500;
+    }
+
+    .project-tab p {
+      font-size: 0.87rem;
+      color: var(--ink-secondary);
+      margin-bottom: 0.65rem;
+    }
+
+    .mini-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .mini-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      background: var(--bg-page);
+      color: var(--ink-secondary);
+      border: 1px solid var(--border-subtle);
+    }
+
+    /* Right Console Panel */
+    .console-card {
+      background: var(--bg-console);
+      color: #F8FAFC;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid #1E293B;
+    }
+
+    .console-bar {
+      background: #1E293B;
+      padding: 0.75rem 1.15rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: #94A3B8;
+    }
+
+    .console-body {
+      padding: 1.4rem;
+    }
+
+    .console-body h4 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.05rem;
+      color: #38BDF8;
+      margin-bottom: 0.5rem;
+    }
+
+    .console-desc {
+      font-size: 0.88rem;
+      color: #CBD5E1;
+      margin-bottom: 1.1rem;
+    }
+
+    .arch-flow {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.45rem;
+      margin-bottom: 1.15rem;
+      padding: 0.75rem;
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .arch-node {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      padding: 0.3rem 0.6rem;
+      border-radius: 5px;
+      background: rgba(56, 189, 248, 0.15);
+      color: #7DD3FC;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    .arch-sep {
+      color: #64748B;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+    }
+
+    .code-pre {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      line-height: 1.55;
+      color: #E2E8F0;
+      background: #090D16;
+      padding: 1rem;
+      border-radius: 8px;
+      border: 1px solid #1E293B;
+      overflow-x: auto;
+      white-space: pre;
+    }
+
+    /* Stack Matrix */
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 1.15rem;
+    }
+
+    .stack-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+    }
+
+    .stack-card h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.98rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: var(--brand-blue);
+    }
+
+    .stack-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    .stack-chip {
+      font-size: 0.83rem;
+      padding: 0.3rem 0.65rem;
+      border-radius: 6px;
+      background: var(--bg-page);
+      border: 1px solid var(--border-subtle);
+      color: var(--ink-primary);
+      font-weight: 500;
+    }
+
+    /* Repositories Grid */
+    .repo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+
+    .repo-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.15rem;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 0.75rem;
+      transition: border-color 0.15s ease;
+    }
+
+    .repo-card:hover {
+      border-color: var(--brand-blue);
+    }
+
+    .repo-card h3 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.92rem;
+      color: var(--brand-blue);
+      margin-bottom: 0.35rem;
+    }
+
+    .repo-card p {
+      font-size: 0.85rem;
+      color: var(--ink-secondary);
+    }
+
+    .repo-lang {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--ink-muted);
+    }
+
+    /* Footer */
+    .footer {
+      padding: 2.5rem 0 3.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      color: var(--ink-muted);
+      font-size: 0.88rem;
+    }
+
+    @media (max-width: 860px) {
+      .hero,
+      .workbench {
+        grid-template-columns: 1fr;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a href="#" class="brand-id">
+        <div class="brand-badge">AC</div>
+        <div>
+          <span class="brand-name">Andrés Chávez Jiménez</span>
+          <span class="brand-role">Ingeniero de Software · Backend &amp; Full-Stack</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#proyectos">Arquitectura &amp; Proyectos</a></li>
+        <li><a href="#stack">Stack Tecnológico</a></li>
+        <li><a href="#repositorios">GitHub Repos</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+      <button class="theme-btn" id="themeToggle" type="button">Modo Oscuro</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Hero -->
+    <section class="hero">
+      <div>
+        <div class="status-pill">
+          <span class="status-dot"></span>
+          Disponible · Guayaquil, Ecuador
+        </div>
+        <h1>Ingeniería de Software orientada a arquitectura limpia, datos y sistemas críticos.</h1>
+        <p class="hero-lead">
+          Desarrollador Backend y Full-Stack especializado en <strong>Programación Orientada a Objetos (POO)</strong>, 
+          <strong>Principios SOLID</strong>, <strong>Patrones de Diseño (MVC, DAO/DTO)</strong> y <strong>Clean Code</strong>. 
+          Experiencia construyendo APIs REST, módulos ERP empresariales, aplicaciones móviles conectadas por BLE y bases de datos relacionales optimizadas.
+        </p>
+        <div class="pillar-tags">
+          <span class="pillar-tag">Java / Spring Boot</span>
+          <span class="pillar-tag">Python / Flask / Odoo</span>
+          <span class="pillar-tag">PostgreSQL / SQL</span>
+          <span class="pillar-tag">Angular / React</span>
+          <span class="pillar-tag">Kotlin / Flutter</span>
+          <span class="pillar-tag">Docker / Git / CI-CD</span>
+        </div>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://github.com/AndyCj195" target="_blank" rel="noopener">
+            Ver GitHub (@AndyCj195)
+          </a>
+          <a class="btn btn-outline" href="https://www.linkedin.com/in/andres-chavez-5b7664285/" target="_blank" rel="noopener">
+            Perfil de LinkedIn
+          </a>
+          <a class="btn btn-outline" href="mailto:andreschavez829@gmail.com">
+            andreschavez829@gmail.com
+          </a>
+        </div>
+      </div>
+
+      <aside class="profile-dossier" aria-label="Ficha técnica profesional">
+        <div class="dossier-header">
+          <img class="avatar" src="https://avatars.githubusercontent.com/u/119973279?v=4" alt="Andrés Eliceo Chávez Jiménez" />
+          <div class="dossier-meta">
+            <h2>Andrés Eliceo Chávez Jiménez</h2>
+            <p>Universidad de Guayaquil · Ingeniería de Software</p>
+          </div>
+        </div>
+        <div class="spec-list">
+          <div class="spec-row">
+            <span class="spec-key">Especialidad Principal</span>
+            <span class="spec-val">Backend, APIs REST &amp; Full-Stack</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">Arquitectura &amp; Patrones</span>
+            <span class="spec-val">POO · SOLID · MVC · DAO/DTO · Clean Code</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">Motores Relacionales</span>
+            <span class="spec-val">PostgreSQL · MySQL · SQLite</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">Calidad &amp; DevOps</span>
+            <span class="spec-val">Pruebas Unitarias · Refactorización · Docker · Git</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">Contacto Directo</span>
+            <span class="spec-val">+593 99 303 5065</span>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Interactive Architecture & Projects -->
+    <section class="section" id="proyectos">
+      <div class="section-header">
+        <div>
+          <h2>Experiencia y Proyectos de Alta Complejidad</h2>
+          <p>Selecciona cada sistema para inspeccionar su flujo arquitectónico, decisiones técnicas e implementación.</p>
+        </div>
+      </div>
+
+      <div class="workbench">
+        <div class="project-selector" role="tablist">
+          <button class="project-tab active" type="button" data-project="erp">
+            <div class="project-tab-top">
+              <h3>1. Módulos ERP (Odoo) &amp; Sistema WMS</h3>
+              <span class="project-period">Feb 2026 – May 2026</span>
+            </div>
+            <p>Arquitectura de módulos logísticos en Odoo (Python, XML, OWL) y sistema WMS con Flask y Stored Procedures en PostgreSQL.</p>
+            <div class="mini-tags">
+              <span class="mini-tag">Python</span>
+              <span class="mini-tag">Odoo OWL</span>
+              <span class="mini-tag">Flask</span>
+              <span class="mini-tag">PostgreSQL</span>
+            </div>
+          </button>
+
+          <button class="project-tab" type="button" data-project="dipromacom">
+            <div class="project-tab-top">
+              <h3>2. Desarrollador de Software — DIPROMACOM</h3>
+              <span class="project-period">May 2026 – Jul 2026</span>
+            </div>
+            <p>Desarrollo, pruebas unitarias, depuración y refactorización de módulos empresariales aplicando Clean Code y POO.</p>
+            <div class="mini-tags">
+              <span class="mini-tag">Clean Code</span>
+              <span class="mini-tag">POO &amp; SOLID</span>
+              <span class="mini-tag">Pruebas Unitarias</span>
+              <span class="mini-tag">Refactorización</span>
+            </div>
+          </button>
+
+          <button class="project-tab" type="button" data-project="mobile">
+            <div class="project-tab-top">
+              <h3>3. Puente BLE Health Connect &amp; MecaniGest2</h3>
+              <span class="project-period">Feb 2026 – Sep 2026</span>
+            </div>
+            <p>Sincronización biométrica BLE GATT en Kotlin/Jetpack Compose y sistema MecaniGest2 en Flutter/SQLite bajo MVC y DAO/DTO.</p>
+            <div class="mini-tags">
+              <span class="mini-tag">Kotlin BLE</span>
+              <span class="mini-tag">Jetpack Compose</span>
+              <span class="mini-tag">Flutter / Dart</span>
+              <span class="mini-tag">MVC · DAO/DTO</span>
+            </div>
+          </button>
+
+          <button class="project-tab" type="button" data-project="security">
+            <div class="project-tab-top">
+              <h3>4. Ciberseguridad y Desarrollo Seguro</h3>
+              <span class="project-period">Nov 2025 – Dic 2025</span>
+            </div>
+            <p>Análisis de vulnerabilidades, evaluación de mecánicas criptográficas y scripts de auditoría en Python sobre entornos Linux.</p>
+            <div class="mini-tags">
+              <span class="mini-tag">Desarrollo Seguro</span>
+              <span class="mini-tag">Criptografía</span>
+              <span class="mini-tag">Python</span>
+              <span class="mini-tag">Kali Linux</span>
+            </div>
+          </button>
+        </div>
+
+        <div class="console-card" aria-live="polite">
+          <div class="console-bar">
+            <span id="consoleFilename">arquitectura_erp_wms.sql</span>
+            <span>Blueprint Técnico</span>
+          </div>
+          <div class="console-body">
+            <h4 id="consoleTitle">Arquitectura ERP (Odoo OWL) &amp; Optimización PostgreSQL</h4>
+            <p class="console-desc" id="consoleDesc">
+              Diseño de componentes reactivos en OWL y vistas XML integradas con modelos de negocio en Python para trazabilidad de pallets en tiempo real, respaldado por funciones transaccionales en PostgreSQL.
+            </p>
+            <div class="arch-flow" id="consoleFlow">
+              <span class="arch-node">Lector Barcode / UI OWL</span>
+              <span class="arch-sep">→</span>
+              <span class="arch-node">Controlador Python (Odoo / Flask)</span>
+              <span class="arch-sep">→</span>
+              <span class="arch-node">PostgreSQL Stored Procedures</span>
+            </div>
+            <pre class="code-pre" id="consoleCode">-- Procedimiento de trazabilidad y asignación de ubicación logística
+CREATE OR REPLACE FUNCTION wms_asignar_ubicacion_pallet(
+    p_codigo_pallet VARCHAR,
+    p_ubicacion_destino INT
+) RETURNS TABLE(estado VARCHAR, timestamp_op TIMESTAMPTZ)
+LANGUAGE plpgsql AS $$
+BEGIN
+    UPDATE wms_inventario_pallets
+       SET ubicacion_id = p_ubicacion_destino,
+           actualizado_en = NOW()
+     WHERE codigo_barras = p_codigo_pallet;
+
+    RETURN QUERY SELECT 'ASIGNADO'::VARCHAR, NOW();
+END;
+$$;</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stack Tecnológico -->
+    <section class="section" id="stack">
+      <div class="section-header">
+        <div>
+          <h2>Habilidades Técnicas (Stack Tecnológico)</h2>
+          <p>Capacidades organizadas por capa de ingeniería y estándares de calidad de software.</p>
+        </div>
+      </div>
+
+      <div class="stack-grid">
+        <div class="stack-card">
+          <h3>Lenguajes de Programación</h3>
+          <div class="stack-items">
+            <span class="stack-chip">Java</span>
+            <span class="stack-chip">Kotlin</span>
+            <span class="stack-chip">Python</span>
+            <span class="stack-chip">TypeScript</span>
+            <span class="stack-chip">JavaScript</span>
+            <span class="stack-chip">Dart</span>
+            <span class="stack-chip">PHP</span>
+            <span class="stack-chip">SQL</span>
+          </div>
+        </div>
+
+        <div class="stack-card">
+          <h3>Frameworks &amp; Librerías</h3>
+          <div class="stack-items">
+            <span class="stack-chip">Spring Boot</span>
+            <span class="stack-chip">Angular</span>
+            <span class="stack-chip">React</span>
+            <span class="stack-chip">Flutter</span>
+            <span class="stack-chip">Jetpack Compose</span>
+            <span class="stack-chip">Flask</span>
+            <span class="stack-chip">Express</span>
+            <span class="stack-chip">Symfony / CodeIgniter 4</span>
+            <span class="stack-chip">Odoo (OWL)</span>
+          </div>
+        </div>
+
+        <div class="stack-card">
+          <h3>Arquitectura &amp; Calidad de Código</h3>
+          <div class="stack-items">
+            <span class="stack-chip">Programación Orientada a Objetos (POO)</span>
+            <span class="stack-chip">Principios SOLID</span>
+            <span class="stack-chip">Patrones MVC / DAO / DTO</span>
+            <span class="stack-chip">Clean Code</span>
+            <span class="stack-chip">APIs REST</span>
+            <span class="stack-chip">Pruebas Unitarias e Integración</span>
+            <span class="stack-chip">Refactorización</span>
+          </div>
+        </div>
+
+        <div class="stack-card">
+          <h3>Bases de Datos, DevOps &amp; Seguridad</h3>
+          <div class="stack-items">
+            <span class="stack-chip">PostgreSQL (Stored Procedures)</span>
+            <span class="stack-chip">MySQL</span>
+            <span class="stack-chip">SQLite</span>
+            <span class="stack-chip">Git / GitHub</span>
+            <span class="stack-chip">Docker</span>
+            <span class="stack-chip">CI/CD (Jenkins)</span>
+            <span class="stack-chip">Desarrollo Seguro &amp; Ciberseguridad</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Public Repositories -->
+    <section class="section" id="repositorios">
+      <div class="section-header">
+        <div>
+          <h2>Repositorios Públicos en GitHub (@AndyCj195)</h2>
+          <p>Muestras de código, pipelines CI/CD, backends y proyectos académicos disponibles en GitHub.</p>
+        </div>
+      </div>
+
+      <div class="repo-grid">
+        <a class="repo-card" href="https://github.com/AndyCj195/goru-backend" target="_blank" rel="noopener">
+          <div>
+            <h3>AndyCj195/goru-backend</h3>
+            <p>Servicios backend, estructura de controladores, lógica de negocio y persistencia de datos.</p>
+          </div>
+          <span class="repo-lang">Backend · PHP / API</span>
+        </a>
+
+        <a class="repo-card" href="https://github.com/AndyCj195/Goruprojectagentactivation" target="_blank" rel="noopener">
+          <div>
+            <h3>AndyCj195/Goruprojectagentactivation</h3>
+            <p>Aplicación tipada en TypeScript con integración modular de servicios y gestión de flujos.</p>
+          </div>
+          <span class="repo-lang">TypeScript · Full-Stack</span>
+        </a>
+
+        <a class="repo-card" href="https://github.com/AndyCj195/cicd-jenkins-project" target="_blank" rel="noopener">
+          <div>
+            <h3>AndyCj195/cicd-jenkins-project</h3>
+            <p>Automatización de integración y entrega continua (CI/CD) con pipelines de construcción y pruebas.</p>
+          </div>
+          <span class="repo-lang">CI/CD · Jenkins · JavaScript</span>
+        </a>
+
+        <a class="repo-card" href="https://github.com/AndyCj195/indegor-frontend-codelgniter" target="_blank" rel="noopener">
+          <div>
+            <h3>AndyCj195/indegor-frontend-codelgniter</h3>
+            <p>Sistema empresarial estructurado bajo arquitectura MVC con CodeIgniter e interfaz dinámica.</p>
+          </div>
+          <span class="repo-lang">MVC · CodeIgniter · JS</span>
+        </a>
+      </div>
+    </section>
+
+    <footer class="footer" id="contacto">
+      <div>
+        <strong>Andrés Eliceo Chávez Jiménez</strong> · Guayaquil, Ecuador · 
+        <a href="mailto:andreschavez829@gmail.com" style="color: inherit;">andreschavez829@gmail.com</a> · +593 99 303 5065
+      </div>
+      <div>
+        <a href="https://github.com/AndyCj195" target="_blank" rel="noopener" style="color: inherit; margin-right: 1rem;">GitHub</a>
+        <a href="https://www.linkedin.com/in/andres-chavez-5b7664285/" target="_blank" rel="noopener" style="color: inherit;">LinkedIn</a>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    const projectData = {
+      erp: {
+        filename: 'arquitectura_erp_wms.sql',
+        title: 'Arquitectura ERP (Odoo OWL) & Optimización PostgreSQL',
+        desc: 'Diseño de componentes reactivos en OWL y vistas XML integradas con modelos de negocio en Python para trazabilidad de pallets en tiempo real, respaldado por funciones transaccionales en PostgreSQL.',
+        flow: ['Lector Barcode / UI OWL', 'Controlador Python (Odoo / Flask)', 'PostgreSQL Stored Procedures'],
+        code: `-- Procedimiento de trazabilidad y asignación de ubicación logística
+CREATE OR REPLACE FUNCTION wms_asignar_ubicacion_pallet(
+    p_codigo_pallet VARCHAR,
+    p_ubicacion_destino INT
+) RETURNS TABLE(estado VARCHAR, timestamp_op TIMESTAMPTZ)
+LANGUAGE plpgsql AS $$
+BEGIN
+    UPDATE wms_inventario_pallets
+       SET ubicacion_id = p_ubicacion_destino,
+           actualizado_en = NOW()
+     WHERE codigo_barras = p_codigo_pallet;
+
+    RETURN QUERY SELECT 'ASIGNADO'::VARCHAR, NOW();
+END;
+$$;`
+      },
+      dipromacom: {
+        filename: 'ServicioOrdenesImpl.java',
+        title: 'Ingeniería de Software & Refactorización — DIPROMACOM',
+        desc: 'Aplicación de Principios SOLID, inyección de dependencias, pruebas unitarias y refactorización de servicios para garantizar mantenibilidad y altos tiempos de respuesta.',
+        flow: ['API Controller', 'Service Layer (SOLID / Clean Code)', 'DAO / Repository', 'Unit Tests'],
+        code: `// Aplicación de Principios SOLID (DIP) y Clean Code en capa de servicio
+public class OrdenEmpresarialService {
+    private final OrdenRepository ordenRepository;
+    private final ValidadorTransaccion validador;
+
+    public OrdenEmpresarialService(OrdenRepository repo, ValidadorTransaccion validador) {
+        this.ordenRepository = repo;
+        this.validador = validador;
+    }
+
+    public ResultadoOperacion procesarOrden(OrdenDTO dto) {
+        validador.verificarIntegridad(dto);
+        Orden entidad = OrdenMapper.toEntity(dto);
+        return ordenRepository.guardarTransaccion(entidad);
+    }
+}`
+      },
+      mobile: {
+        filename: 'BleHealthBridge.kt',
+        title: 'Puente Biométrico BLE GATT (Kotlin) & MecaniGest2 (Flutter MVC/DAO)',
+        desc: 'Decodificación asíncrona de tramas Bluetooth Low Energy (GATT) hacia Google Health Connect en Android nativo y arquitectura desacoplada MVC + DAO/DTO en Flutter con SQLite.',
+        flow: ['Dispositivo BLE GATT', 'Decoder Asíncrono Kotlin', 'Health Connect API', 'SQLite DAO/DTO'],
+        code: `// Gestor asíncrono de telemetría BLE hacia Google Health Connect
+class BleTelemetryManager(private val healthConnectClient: HealthConnectClient) {
+    suspend fun onCharacteristicChanged(payload: ByteArray) {
+        val frame = BiometricFrameDecoder.decode(payload)
+        if (frame.isValidHeartRate()) {
+            val record = HeartRateRecord(
+                startTime = frame.timestamp,
+                samples = listOf(HeartRateRecord.Sample(frame.timestamp, frame.bpm.toLong()))
+            )
+            healthConnectClient.insertRecords(listOf(record))
+        }
+    }
+}`
+      },
+      security: {
+        filename: 'auditoria_integridad.py',
+        title: 'Ciberseguridad, Criptografía Aplicada y Desarrollo Seguro',
+        desc: 'Evaluación de integridad de archivos, verificación criptográfica SHA-256/AES y prevención de vulnerabilidades (OWASP) en servicios y scripts de automatización.',
+        flow: ['Análisis de Superficie', 'Verificación Criptográfica SHA-256', 'Hardening & Principios OWASP'],
+        code: `# Verificación criptográfica de integridad y control de acceso seguro
+import hashlib
+from pathlib import Path
+
+def verificar_integridad_artefacto(ruta: Path, hash_esperado: str) -> bool:
+    digest = hashlib.sha256()
+    with ruta.open("rb") as f:
+        for bloque in iter(lambda: f.read(4096), b""):
+            digest.update(bloque)
+    return digest.hexdigest() == hash_esperado.lower()`
+      }
+    };
+
+    const tabs = document.querySelectorAll('.project-tab');
+    const filenameEl = document.getElementById('consoleFilename');
+    const titleEl = document.getElementById('consoleTitle');
+    const descEl = document.getElementById('consoleDesc');
+    const flowEl = document.getElementById('consoleFlow');
+    const codeEl = document.getElementById('consoleCode');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const item = projectData[tab.dataset.project];
+        filenameEl.textContent = item.filename;
+        titleEl.textContent = item.title;
+        descEl.textContent = item.desc;
+        flowEl.innerHTML = item.flow
+          .map((node, idx) => `<span class="arch-node">${node}</span>` + (idx < item.flow.length - 1 ? '<span class="arch-sep">→</span>' : ''))
+          .join('');
+        codeEl.textContent = item.code;
+      });
+    });
+
+    const themeBtn = document.getElementById('themeToggle');
+    themeBtn.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      if (isDark) {
+        document.documentElement.removeAttribute('data-theme');
+        themeBtn.textContent = 'Modo Oscuro';
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeBtn.textContent = 'Modo Claro';
+      }
+    });
+  </script>
+</body>
+</html>
